@@ -7,11 +7,38 @@
 # API.rb - Cloud Depot API/CLI
 #======================================#
 
+require "rubygems"
+require "active_record"
+require 'logger'
+require 'pg'
+require 'socket'
+require "yaml"
+
 #----------------------------#
 # init_API()
 #----------------------------#
 
+class Worker < ActiveRecord::Base
+end
+
 def init_API()
+	
+	 ActiveRecord::Base.establish_connection(
+    :adapter  => 'postgresql',
+    :database => 'datical_development',
+    :username => 'postgres',
+    :password => 'postgres',
+    :host     => 'localhost')
+	 
+end
+
+#-----------------------------------#
+# lookup_worker
+#-----------------------------------#
+
+def lookup_worker(id)
+  worker = Worker.find(id)
+  return worker
 end
 
 #----------------------------#
@@ -32,8 +59,10 @@ def process_CMD(argv)
 			process_Instance_CMD(argv)
 		when "credential"
 			process_Credential_CMD(argv)
+		when "test"
+			process_Test_CMD(argv)
 		else # Display Help
-			STDOUT.puts "\nUsage: cd_api COMMAND OPTIONS..."
+			STDOUT.puts "\nUsage: api COMMAND OPTIONS..."
 			STDOUT.puts ""
 			STDOUT.puts "Commands:"
 			STDOUT.puts "  login username password"
@@ -108,6 +137,46 @@ end
 
 def process_Instance_CMD(argv)
   STDOUT.puts "instance create"
+end
+
+#----------------------------#
+# process_Test_CMD()
+#----------------------------#
+
+def process_Test_CMD(argv)
+	if argv[1]
+		STDOUT.puts "test worker=" + argv[1]
+		worker = Worker.find(argv[1])
+		puts "API: Test connect to WORKER: " + worker.wrk_host + " on PORT: " + worker.wrk_port.to_s
+		if agent_auth(worker.wrk_host, worker.wrk_port)
+			puts "API: Test connect SUCCESSFUL."
+		else
+			puts "API: Test connect UN-SUCCESSFUL."
+		end
+	else # Display Help
+		STDOUT.puts "\nUsage: api test AGENT"
+	end
+end
+
+def agent_auth(agentName, agentPort)
+  # Connect to Worker and authenticate
+  begin
+		clientSession = TCPSocket.new(agentName, agentPort )
+  rescue
+		puts "API: Cannot connect to AGENT: " + agentName
+		return false
+  else
+		puts "API: Authenticating Connection with AGENT."
+		clientSession.puts "5F3BDD56"
+		agentResponse = clientSession.gets
+		
+		if agentResponse.include? "UNAUTHORIZED"
+			puts agentResponse
+			return false
+		else
+			return true
+		end
+  end
 end
 
 ##############################
