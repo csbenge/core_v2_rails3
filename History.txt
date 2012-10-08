@@ -22,5 +22,5 @@ rake db:migrate
 rails generate scaffold Worker wrk_name:string wrk_description:string wrk_type:string wrk_host:string wrk_port:integer wrk_user:string wrk_hashed_password:string
 rake db:migrate
 
-# Add timeout to worker
+# Add auth_token to worker
 

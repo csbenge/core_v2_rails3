@@ -14,6 +14,18 @@ require 'pg'
 require 'socket'
 require "yaml"
 
+#-----------------------------------#
+# init_Logger
+#-----------------------------------#
+
+def init_Logger(level)
+  $log = Logger.new(STDOUT)
+  $log.level = Logger::DEBUG
+  $log.formatter = proc do |severity, datetime, progname, msg|
+    "#{datetime} - #{severity} - #{msg}\n"
+  end
+end
+
 #----------------------------#
 # init_API()
 #----------------------------#
@@ -60,7 +72,7 @@ def process_CMD(argv)
 		when "credential"
 			process_Credential_CMD(argv)
 		when "test"
-			process_Test_CMD(argv)
+			return process_Test_CMD(argv)
 		else # Display Help
 			STDOUT.puts "\nUsage: api COMMAND OPTIONS..."
 			STDOUT.puts ""
@@ -91,7 +103,7 @@ end
 #----------------------------#
 
 def process_Depot_CMD(argv)
-	case argv[1]
+	case argv[0]
 	when "list"
 		process_Depot_List_CMD(argv)
 	else # Display Help
@@ -144,17 +156,17 @@ end
 #----------------------------#
 
 def process_Test_CMD(argv)
-	if argv[1]
-		STDOUT.puts "test worker=" + argv[1]
+	if argv[0]
 		worker = Worker.find(argv[1])
-		puts "API: Test connect to WORKER: " + worker.wrk_host + " on PORT: " + worker.wrk_port.to_s
+		log_msg = "API: Test connect to WORKER: " + worker.wrk_host + " on PORT: " + worker.wrk_port.to_s
+		$log.info log_msg
 		if agent_auth(worker.wrk_host, worker.wrk_port)
-			puts "API: Test connect SUCCESSFUL."
+			return "API: Test connect SUCCESSFUL."
 		else
-			puts "API: Test connect UN-SUCCESSFUL."
+			return "API: Test connect UN-SUCCESSFUL."
 		end
 	else # Display Help
-		STDOUT.puts "\nUsage: api test AGENT"
+		return "Usage: api test AGENT"
 	end
 end
 
@@ -163,17 +175,19 @@ def agent_auth(agentName, agentPort)
   begin
 		clientSession = TCPSocket.new(agentName, agentPort )
   rescue
-		puts "API: Cannot connect to AGENT: " + agentName
+		log_msg = "API: Cannot connect to AGENT: " + agentName
+		$log.info log_msg
 		return false
   else
-		puts "API: Authenticating Connection with AGENT."
+		$log.info "API: Authenticating Connection with AGENT."
 		clientSession.puts "5F3BDD56"
 		agentResponse = clientSession.gets
 		
 		if agentResponse.include? "UNAUTHORIZED"
-			puts agentResponse
+			$log.info agentResponse
 			return false
 		else
+			$log.info agentResponse
 			return true
 		end
   end
@@ -183,5 +197,41 @@ end
 # main
 ##############################
 
+init_Logger("DEBUG")
+$log.info "API: Starting..."
+server = TCPServer.new(50001)
 init_API()
-process_CMD(ARGV)
+$log.info "API: Waiting for call..."
+
+#-----------------------------------#
+# Loop 4ever
+#-----------------------------------#
+
+thread_count = 0
+
+loop do
+  Thread.start(server.accept)  do |session| # Wait for a connection
+    
+		thread_count += 1
+    
+    $log.info "API: Connection to SYSTEM - #{session.peeraddr[2]}"
+   
+    #-- BEGIN: Process Task(s)
+    
+    cmd = session.gets
+    log_msg = "API: Command Received: " + cmd
+    $log.info log_msg
+    result = process_CMD(cmd.split(' '))
+    log_msg = "API: Command Results: " + result
+    $log.info log_msg
+    session.puts result
+       
+    #-- END: Process Tasks
+    
+    # Close connection to API
+    session.puts "from API: Goodbye."
+    
+    $log.info "API: Waiting for call..."
+  end
+  thread_count -= 1
+end
