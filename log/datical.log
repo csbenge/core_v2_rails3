@@ -1,0 +1,10 @@
+ INFO depot: 2012-08-31 21:08:17 -0500 - creating depot: Depot_11 at DEPOT/Depot_11
+ INFO depot: 2012-08-31 21:09:09 -0500 - creating depot: Depot_12 at DEPOT/Depot_12
+ INFO depot: 2012-08-31 21:12:38 -0500 - creating depot: Depot_13 at DEPOT/Depot_13
+ INFO depot: 2012-08-31 21:40:29 -0500 - creating package: Package_11 at DEPOT/Depot_11/Package_11
+ INFO depot: 2012-08-31 21:41:21 -0500 - destroying depot: Depot_11 at DEPOT/Depot_11
+ INFO depot: 2012-08-31 21:41:43 -0500 - destroying depot: Depot_12 at DEPOT/Depot_12
+ INFO depot: 2012-08-31 21:42:09 -0500 - creating package: Package_32 at DEPOT/Depot_13/Package_32
+ INFO depot: 2012-08-31 21:43:33 -0500 - creating artifact: hosts at DEPOT/Depot_13/Package_32
+ INFO depot: 2012-10-08 12:42:35 -0500 - creating depot: Depot_1_4 at DEPOT/Depot_1_4
+ INFO depot: 2012-10-08 12:57:53 -0500 - destroying depot: Depot_13 at DEPOT/Depot_13

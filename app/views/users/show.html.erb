@@ -1,0 +1,46 @@
+
+
+<h2><%= t('.user_details') %></h2><br>
+
+<% unless notice.nil? %>
+  <div class="container center alert alert-success"  style="width:500px">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
+
+<table class="table table-striped table-bordered table-condensed">
+<tr>
+  <td align="right" style="width:200px"><b><%= t('.name') %></b></td>
+  <td><%= @user.name %></td>
+</tr>
+<tr>
+  <td align="right" style="width:200px"><b><%= t('.firstname') %></b></td>
+  <td><%= @user.firstname %></td>
+</tr>
+<tr>
+  <td align="right" style="width:200px"><b><%= t('.lastname') %></b></td>
+  <td><%= @user.lastname %></td>
+</tr>
+<tr>
+  <td align="right"><b><%= t('.email') %></b></td>
+  <td><%= @user.email %></td>
+</tr>
+<tr>
+  <td align="right"><b><%= t('.role') %></b></td>
+  <td><%= get_RoleName(@user.role_id) %></td>
+</tr>
+<tr>
+  <td align="right"><b><%= t('.hash_password') %></b></td>
+  <td><%= @user.hashed_password %></td>
+</tr>
+<tr>
+<tr>
+  <td align="right"><b><%= t('.salt') %></b></td>
+  <td><%= @user.salt %></td>
+</tr>
+</table>
+
+<%= link_to t('.edit_user'), edit_user_path(@user), :class=>'btn btn-primary btn-mini' %>
+
+<br>
+<%= link_to t('.back'), users_path %>

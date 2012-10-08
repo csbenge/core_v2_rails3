@@ -1,0 +1,21 @@
+
+<div class="center">
+ 
+  <% if flash[:alert] %>
+    <div class="container center alert alert-success"  style="width:500px">
+      <p id="notice"><%= flash[:alert] %></p>
+    </div>
+  <% end %>
+
+  <br><br><br>
+
+  <div class="container">
+    
+    <h1><%= t('.welcome_msg') %></h1>
+
+    Current User: <%= session[:user_id] %><br>
+    Current Role: <%= session[:user_role] %>
+    
+  </div>
+  
+</div>

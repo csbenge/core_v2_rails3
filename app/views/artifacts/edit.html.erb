@@ -1,0 +1,16 @@
+
+<div class="well" style="width:95%">
+  
+<h3><%= t('.edit_artifact') %></h3><br>
+
+<% unless notice.nil? %>
+  <div class="container center alert alert-error"  style="width:500px">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
+
+<%= render 'form' %>
+
+</div>
+
+

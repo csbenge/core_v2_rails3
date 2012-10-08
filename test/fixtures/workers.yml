@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  wrk_name: MyString
+  wrk_description: MyString
+  wrk_type: MyString
+  wrk_host: MyString
+  wrk_port: 1
+  wrk_user: MyString
+  wrk_hashed_password: MyString
+
+two:
+  wrk_name: MyString
+  wrk_description: MyString
+  wrk_type: MyString
+  wrk_host: MyString
+  wrk_port: 1
+  wrk_user: MyString
+  wrk_hashed_password: MyString

@@ -1,0 +1,9 @@
+
+<div class="center">
+  <%= render :partial => "shared/nav", :locals => {:roles => true} %>
+</div>
+
+<h2><%= t('.add_role') %></h2><br>
+
+<%= render 'form' %>
+<%= link_to 'Back', roles_path %>

@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: roles
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  description :string(255)
+#  read        :integer         default(0)
+#  write       :integer         default(0)
+#  execute     :integer         default(0)
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  read: 1
+  write: 1
+  execute: 1
+
+two:
+  name: MyString
+  description: MyString
+  read: 1
+  write: 1
+  execute: 1

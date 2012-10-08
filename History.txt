@@ -1,0 +1,26 @@
+#
+# git project setup
+#
+
+git config --global user.email csbenge@gmail.com
+git config --global user.name "Carey Benge"
+git config --global core.editor "vi"
+git remote add origin git@github.com:csbenge/Datical.git
+git remote set-url origin ssh://git@github.com/csbenge/Datical.git
+git push -u origin master
+
+
+#########################
+# X Application
+
+
+### Engine
+rails generate scaffold Engine eng_name:string eng_description:string eng_type:string eng_host:string eng_threads:integer
+rake db:migrate
+
+### Worker
+rails generate scaffold Worker wrk_name:string wrk_description:string wrk_type:string wrk_host:string wrk_port:integer wrk_user:string wrk_hashed_password:string
+rake db:migrate
+
+# Add timeout to worker
+

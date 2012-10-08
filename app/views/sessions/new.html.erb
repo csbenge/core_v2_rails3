@@ -1,0 +1,35 @@
+
+<div class="center">
+  <h1><%= t('.welcome_msg') %></h1>
+
+  <% if flash[:alert] %>
+    <div class="container center alert alert-error"  style="width:500px">
+      <p id="alert"><%= flash[:alert] %></p>
+    </div>
+  <% end %>
+  
+</div>
+  
+<%= form_tag do %>
+
+<div class="container center" style="width:600px">
+  <div class="well form-inline">
+    <h2><%= t('.login_msg') %></h2><br>
+      <table class="center">
+      <tr>
+        <td align="right" style="width:175px"><%= t('.user_id') %>: </td>
+        <td><%= text_field_tag :user_id, params[:user_id], :autofocus => true %></td>
+      </tr>
+      <tr><td><br></td></tr>
+      <tr>
+        <td align="right" ><%= t('.password') %>: </td>
+        <td><%= password_field_tag :password, params[:password] %></td>
+      </tr>
+      </table>
+      <br><br>
+      <button type="submit_tag" class="btn btn-primary"><%= t('.submit') %></button>
+  </div>
+
+<% end %>
+
+</div>

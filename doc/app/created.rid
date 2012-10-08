@@ -1,0 +1,20 @@
+Fri, 25 May 2012 15:14:31 -0500
+doc/README_FOR_APP	Thu, 12 Apr 2012 18:51:27 -0500
+app/controllers/projects_controller.rb	Fri, 04 May 2012 17:31:16 -0500
+app/controllers/application_controller.rb	Mon, 07 May 2012 17:14:58 -0500
+app/controllers/users_controller.rb	Mon, 07 May 2012 13:10:34 -0500
+app/controllers/sessions_controller.rb	Sun, 06 May 2012 16:41:36 -0500
+app/controllers/static_pages_controller.rb	Tue, 24 Apr 2012 15:35:06 -0500
+app/controllers/roles_controller.rb	Mon, 07 May 2012 12:19:39 -0500
+app/controllers/credentials_controller.rb	Thu, 24 May 2012 17:31:33 -0500
+app/helpers/static_pages_helper.rb	Tue, 17 Apr 2012 20:20:50 -0500
+app/helpers/sessions_helper.rb	Tue, 24 Apr 2012 14:08:43 -0500
+app/helpers/projects_helper.rb	Mon, 30 Apr 2012 16:12:56 -0500
+app/helpers/roles_helper.rb	Thu, 03 May 2012 17:28:44 -0500
+app/helpers/credentials_helper.rb	Mon, 07 May 2012 14:43:24 -0500
+app/helpers/application_helper.rb	Mon, 07 May 2012 17:20:31 -0500
+app/helpers/users_helper.rb	Thu, 03 May 2012 16:18:47 -0500
+app/models/project.rb	Sun, 06 May 2012 17:13:00 -0500
+app/models/user.rb	Tue, 08 May 2012 16:15:49 -0500
+app/models/role.rb	Thu, 03 May 2012 16:18:47 -0500
+app/models/credential.rb	Thu, 24 May 2012 16:32:51 -0500

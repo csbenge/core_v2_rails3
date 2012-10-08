@@ -1,0 +1,35 @@
+<%= form_for([@depot, @depot.packages.build]) do |f| %>
+
+   <table>
+    <tr>
+      <td align="left" style="width:100px"><%= f.label :name %></td>
+      <td><%= f.text_field :pkg_name %></td>
+    </tr>
+    <tr><td><br></td></tr>
+    <tr>
+      <td align="left" style="width:100px"><%= f.label :description %></td>
+      <td><%= f.text_field :pkg_desc %></td>
+    </tr>
+    <tr><td><br></td></tr>
+    <tr>
+      <td align="left" style="width:100px"><%= f.label :type %></td>
+      <td><%= f.select :pkg_type, PackagesHelper::TYPE %></td>
+    </tr>
+    <tr><td><br></td></tr>
+    <tr>
+      <td align="left" style="width:100px"><%= f.label :version %></td>
+      <td><%= f.text_field :pkg_version %></td>
+    </tr>
+    <tr><td><br></td></tr>
+    <tr>
+      <td align="left" style="width:100px"><%= f.label t('.status') %></td>
+      <td><%= f.select :pkg_status, PackagesHelper::STATUS %></td>
+    </tr>
+    </table>
+   <br>
+    <br>
+   <button type="submit" class="btn btn-primary btn-small"><%= t('.submit') %></button>
+   <br>
+   <%= link_to t('.cancel') %>
+
+<% end %>

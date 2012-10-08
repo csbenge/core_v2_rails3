@@ -1,0 +1,52 @@
+
+<h3><%= image_tag( "workers.png", :border => 0, :valign => "middle" ) %> <%= t('.workers') %> <%= link_to image_tag('tooltip12x12.png', :border => 0, :align => "top"), nil, title: t('.workers_tooltip'), rel: 'popover' %></h3>
+
+
+<% unless notice.nil? %>
+  <div class="container center alert alert-success"  style="width:500px">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="container center alert alert-error"  style="width:500px">
+    <p id="alert"><%= flash[:alert] %></p>
+  </div>
+<% end %>
+
+<table class="table table-striped table-bordered table-condensed">
+  <tr style="background-color: #44721e">
+    <th style="background-color: #91b96f"><%= sortable t('.worker_name') %></th>
+    <th style="background-color: #91b96f"><%= sortable t('.worker_desc') %></th>
+    <th style="text-align: center; background-color: #91b96f"><%= sortable t('.worker_type') %></th></th>
+    <th style="background-color: #91b96f"><%= sortable t('.worker_host') %></th>
+    <th style="background-color: #91b96f"><%= sortable t('.worker_port') %></th>
+    <th style="background-color: #91b96f"><%= sortable t('.worker_user') %></th>
+    <th style="background-color: #91b96f"><%= sortable t('.worker_hash_pass') %></th>
+
+    <th style="text-align: center; background-color: #91b96f" colspan=4><%= t('.actions') %></th>
+  </tr>
+
+<% @workers.each do |worker| %>
+  <tr>
+    <td><%= worker.wrk_name %></td>
+    <td><%= worker.wrk_description %></td>
+    <td style="text-align: center"><%= raw get_WorkerTypeText(worker.wrk_type) %></td>
+    <td><%= worker.wrk_host %></td>
+    <td><%= worker.wrk_port %></td>
+    <td><%= worker.wrk_user %></td>
+    <td><%= worker.wrk_hashed_password %></td>
+
+    <td style="text-align: center;width:30px"><%= link_to t('.test'), test_worker_path(worker)  %></td>
+    <td style="text-align: center;width:30px"><%= link_to t('.show'), worker %></td>
+    <td style="text-align: center;width:30px""><%= link_to t('.edit'), edit_worker_path(worker) %></td>
+    <td style="text-align: center;width:30px""><%= link_to t('.destroy'), worker, confirm: t('.confirm'), method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= button_to t('.new_worker'), new_worker_path , :class => "btn btn-primary btn-mini" %>
+
+

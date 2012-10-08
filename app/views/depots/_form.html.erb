@@ -1,0 +1,42 @@
+<%= form_for(@depot) do |f| %>
+
+  <% if @depot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@depot.errors.count, "error") %> <%= t('.error01') %></h2>
+
+      <ul>
+      <% @depot.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>  
+  
+  <table>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.depot_name') %></td>
+    <td><%= f.text_field :dep_name %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right"><%= f.label t('.depot_description') %></td>
+    <td><%= f.text_field :dep_desc %></td>
+  </tr>
+   <tr><td><br></td></tr>
+  <tr>
+    <td align="right"><%= f.label t('.depot_type') %></td>
+    <td><%= f.select :dep_type, DepotsHelper::TYPE %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right"><%= f.label t('.depot_status') %></td>
+    <td><%= f.select :dep_status, DepotsHelper::STATUS %></td>
+  </tr>
+  </table>
+   
+  <br>
+  <button type="submit" class="btn btn-primary btn-small"><%= t('.submit') %></button>
+  <br>
+  <%= link_to t('.cancel'), :back %>
+  
+<% end %>

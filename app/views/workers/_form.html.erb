@@ -1,0 +1,60 @@
+
+
+<%= form_for(@worker) do |f| %>
+
+  <% if @worker.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@worker.errors.count, "error") %> <%= t('.error01') %></h2>
+
+      <ul>
+      <% @worker.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+  <tr>
+    <td align="right" style="width:150px"><%= f.label t('.worker_name') %></td>
+    <td><%= f.text_field :wrk_name, :autofocus => true %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.worker_desc') %></td>
+    <td><%= f.text_field :wrk_description %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+   <td align="right" style="width:100px"><%= f.label t('.worker_type') %></td>
+    <td><%= f.select :wrk_type, WorkersHelper::TYPE %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.worker_host') %></td>
+    <td><%= f.text_field :wrk_host %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.worker_port') %></td>
+    <td><%= f.text_field :wrk_port %></td>
+    <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.worker_user') %></td>
+    <td><%= f.text_field :wrk_user %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.worker_hash_pass') %></td>
+    <td><%= f.text_field :wrk_hashed_password %></td>
+  </tr>
+  </tr>
+  </table>
+  
+  <br>
+  <button type="submit" class="btn btn-primary"><%= t('.submit') %></button>
+  <br>
+  <%= link_to t('.cancel'), workers_path %>
+
+<% end %>
+

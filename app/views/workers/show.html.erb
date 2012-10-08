@@ -1,0 +1,54 @@
+
+
+<h2><%= t('.worker_details') %></h2><br>
+
+<% unless notice.nil? %>
+  <div class="container center alert alert-success"  style="width:500px">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="container center alert alert-error"  style="width:500px">
+    <p id="alert"><%= flash[:alert] %></p>
+  </div>
+<% end %>
+
+<table class="table table-striped table-bordered table-condensed">
+<tr>
+  <td align="right" style="width:200px"><b><%= t('.worker_name') %></b></td>
+  <td><%= @worker.wrk_name %></td>
+</tr>
+<tr>
+  <td align="right" style="width:200px"><b><%= t('.worker_desc') %></b></td>
+  <td><%= @worker.wrk_description %></td>
+</tr>
+<tr>
+  <td align="right" style="width:200px"><b><%= t('.worker_type') %></b></td>
+  <td><%= @worker.wrk_type %></td>
+</tr>
+<tr>
+  <td align="right" style="width:200px"><b><%= t('.worker_host') %></b></td>
+  <td><%= @worker.wrk_host %></td>
+</tr>
+<tr>
+  <td align="right" style="width:200px"><b><%= t('.worker_port') %></b></td>
+  <td><%= @worker.wrk_port %></td>
+<tr>
+  <td align="right" style="width:200px"><b><%= t('.worker_user') %></b></td>
+  <td><%= @worker.wrk_user %></td>
+</tr>
+<tr>
+  <td align="right" style="width:200px"><b><%= t('.worker_hash_pass') %></b></td>
+  <td><%= @worker.wrk_hashed_password %></td>
+</tr>
+</tr>
+</table>
+
+<%= link_to t('.edit_worker'), edit_worker_path(@worker), :class=>'btn btn-primary btn-mini' %>
+
+<br>
+<%= link_to t('.back'), workers_path %>
+
+
+

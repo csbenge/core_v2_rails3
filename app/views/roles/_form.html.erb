@@ -1,0 +1,45 @@
+<%= form_for(@role) do |f| %>
+  <% if @role.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@role.errors.count, "error") %> <%= t('.error01') %></h2>
+
+      <ul>
+      <% @role.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.name') %>:</td>
+    <td><%= f.text_field :name, :autofocus => true %></td>
+    </tr>
+  <tr>
+    <td align="right" ><%= f.label t('.description') %>:</td>
+    <td><%= f.text_field :description %></td>
+  </tr>
+  <tr>
+    <td align="right"><%= f.label t('.permissions') %>:</td>
+    <td style="display: inline">
+
+      <%= display_input('read', @role.read) %><label for="read"><%= t('.read') %></label>
+      <%= display_input('write', @role.write) %><label for="write"><%= t('.write') %></label>
+      <%= display_input('execute', @role.execute) %><label for="execute"><%= t('.execute') %></label>
+<!--
+<%= check_box("permissions", "permissions", {:multiple => true}, "read", nil) %><label for="read"><%= t('.read') %></label>
+<%= check_box("permissions", "permissions", {:multiple => true}, "write", nil) %><%= t('.write') %></label>
+<%= check_box("permissions", "permissions", {:multiple => true}, "execute", nil) %><label for="execute"><%= t('.execute') %></label>
+    <input value="read" id="read" name="permissions[]" type="checkbox"><label for="read"><%= t('.read') %></label>
+    <input value="write" id="write" name="permissions[]" type="checkbox"><label for="write"><%= t('.write') %></label>
+    <input value="execute" id="execute" name="permissions[]" type="checkbox"><label for="execute"><%= t('.execute') %></label>
+-->
+</td>
+  </tr>
+</table>
+  
+<br>
+<button type="submit" class="btn btn-primary"><%= t('.submit') %></button>  
+
+<% end %>

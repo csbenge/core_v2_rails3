@@ -1,0 +1,8 @@
+
+testdb: 
+  driver:        "org.postgresql.Driver"
+  driver_CPATH:  "Liquibase/postgresql-9.1-902.jdbc4.jar"
+  url:           "jdbc:postgresql:testdb"
+  username:      "postgres"
+  password:      "password"
+  changeLogFile: "Liquibase/core-changelog.xml"

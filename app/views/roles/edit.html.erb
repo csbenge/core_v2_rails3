@@ -1,0 +1,17 @@
+
+<div class="center">
+  <%= render :partial => "shared/nav", :locals => {:roles => true} %>
+</div>
+
+<h2><%= t('.edit_role') %></h2><br>
+
+<% unless notice.nil? %>
+  <div class="container center alert alert-error"  style="width:500px">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
+
+<%= render 'form' %>
+
+<%= link_to t('.details'), @role %> |
+<%= link_to t('.cancel'), roles_path %>

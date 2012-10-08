@@ -1,0 +1,49 @@
+
+
+<%= form_for(@engine) do |f| %>
+
+  <% if @engine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@engine.errors.count, "error") %> <%= t('.error01') %></h2>
+
+      <ul>
+      <% @engine.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+  <tr>
+    <td align="right" style="width:150px"><%= f.label t('.engine_name') %></td>
+    <td><%= f.text_field :eng_name, :autofocus => true %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.engine_desc') %></td>
+    <td><%= f.text_field :eng_description %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.engine_type') %></td>
+    <td><%= f.text_field :eng_type %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.engine_host') %></td>
+    <td><%= f.text_field :eng_host %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.engine_threads') %></td>
+    <td><%= f.text_field :eng_threads %></td>
+  </tr>
+  </table>
+  
+  <br>
+  <button type="submit" class="btn btn-primary"><%= t('.submit') %></button>
+  <br>
+  <%= link_to t('.cancel'), engines_path %>
+
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  eng_name: MyString
+  eng_description: MyString
+  eng_type: MyString
+  eng_host: MyString
+  eng_threads: 1
+
+two:
+  eng_name: MyString
+  eng_description: MyString
+  eng_type: MyString
+  eng_host: MyString
+  eng_threads: 1

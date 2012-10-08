@@ -1,0 +1,47 @@
+<%= form_for([@package, @artifact]) do |f| %>
+  
+  <% if @artifact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@artifact.errors.count, "error") %> <%= t('.error01') %></h2>
+
+      <ul>
+      <% @artifact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+ <table>
+  <tr>
+    <td align="left" style="width:100px"><%= f.label :name %><br />
+    <td><%= f.text_field :art_name %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="left" style="width:100px"><%= f.label :description %><br />
+    <td><%= f.text_field :art_desc %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="left" style="width:100px"><%= f.label :type %><br />
+    <td><%= f.select :art_type, ArtifactsHelper::TYPE %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="left" style="width:100px"><%= f.label :version %><br />
+    <td><%= f.text_field :art_version %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="left" style="width:100px"><%= f.label :upload_url %><br />
+    <td><%= f.text_field :art_url %></td>
+  </tr>
+  </table>
+
+  <br>
+  <button type="submit" class="btn btn-primary btn-small"><%= t('.submit') %></button>
+  <br>
+<%= link_to t('.back'), :back %>
+  
+<% end %>

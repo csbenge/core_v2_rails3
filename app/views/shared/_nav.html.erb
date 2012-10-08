@@ -1,0 +1,18 @@
+
+<ul class="nav nav-tabs">
+  <li <% if defined?(home) && home %>class="active"<% end %>><%= link_to t('.tab_home'), home_path %></li>
+  <li <% if defined?(depots) && depots %>class="active"<% end %>><%= link_to t('.tab_depots'), depots_path %></li>
+  <li <% if defined?(users) && users %>class="active"<% end %>><%= link_to t('.tab_users'), users_path %></li>
+  <li <% if defined?(roles) && roles %>class="active"<% end %>><%= link_to t('.tab_roles'), roles_path %></li>
+  <li <% if defined?(credentials) && credentials %>class="active"<% end %>><%= link_to t('.tab_credentials'), credentials_path %></li>
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= t('.tab_dropdown') %><b class="caret"></b></a>
+     <ul class="dropdown-menu">
+      <li><a href="#">Action</a></li>
+      <li><a href="#">Another action</a></li>
+      <li><a href="#">Something else here</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Separated link</a></li>
+    </ul>
+  </li>
+</ul>

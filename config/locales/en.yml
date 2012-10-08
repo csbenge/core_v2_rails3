@@ -1,0 +1,441 @@
+################################
+# Localization file for English.
+################################
+
+en:
+
+# Models
+
+  activerecord:
+    models:
+        user:
+          errors_email: "address is not valid." 
+
+# Controllers
+
+  app_name:           "Depot"
+  
+  user_created:       "User was successfully created."
+  user_updated:       "User was successfully updated."
+  user_deleted:       "User has been deleted."
+  user_inuse:         "User is currently assigned to a depot."
+  user_deleted:       "User has been deleted."
+  
+  role_created:       "Role was successfully created."
+  role_updated:       "Role was successfully updated."
+  role_inuse:         "Role is currently assigned to a user."
+  role_deleted:       "Role has been deleted."
+  
+  depot_created:      "Depot was successfully created."
+  depot_updated:      "Depot was successfully updated."
+  depot_deleted:      "Depot has been deleted."
+  
+  package_created:    "Package was successfully created."
+  package_updated:    "Package was successfully updated."
+  package_deleted:    "Package has been deleted."
+  
+  artifact_created:   "Artifact was successfully created."
+  artifact_updated:   "Artifact was successfully updated."
+  artifact_deleted:   "Artifact has been deleted."
+  
+  session_welcome:    "Welcome "
+  session_login:      "Please Login."
+  session_timeout:    "Your session has timed out. Please log back in."
+  session_bad_uid:    "Invalid userid/password combination."
+  session_logged_out: "Logged Out."
+  
+# Views
+
+  layouts:
+    header:
+      app_name:       "Core"
+      home:           "Home"
+      help:           "Help"
+      login:          "Log In"
+      logout:         "Log Out"
+      login_as:       "logged in as: "
+    footer:
+      copyright:      "Copyright 2013 - Core.com"
+      about:          "About"
+      contact:        "Contact"
+  
+  sessions:
+    new:
+      welcome_msg:    "Welcome to Core"
+      login_msg:      "Log In"
+      name:           "Name"
+      password:       "Password"
+      submit:         "Submit"
+      
+  static_pages:
+    home:
+      welcome_msg:    "Welcome to Core"
+    help:
+      help:           "Help"
+    contact:
+      contact:        "Contact"
+    about:
+      about:          "About"
+
+  depots:
+    index:
+      depot_name:        "Name"
+      depot_details:     "Depots"
+      depot_tooltip:     "A Depot is a ..."
+      depot_no_cred:     "You do not have proper credentials"
+      depot_description: "Description"
+      depot_type:        "Type"
+      depot_url:         "URL"
+      depot_status:      "Status"
+      actions:           "Actions"
+      show:              "Show Packages"
+      edit:              "Edit Depot"
+      destroy:           "Delete Depot"
+      confirm:           "Confirm Delete Depot?\n\nWARNING: Deleting a Depot will delete all associated packages and artifacts!"
+      add_depot:         "Create Depot"
+    edit:
+      edit_depot:        "Edit Depot"
+      details:           "Details"
+      
+    new:
+      add_depot:         "Create Depot"
+      cancel:            "Cancel"
+    show:
+      depot_details:     "Depot Details"
+      depot_name:        "Name"
+      depot_description: "Description"
+      depot_type:        "Type"
+      depot_url:         "URL"
+      depot_status:      "Status"
+      edit_depot:        "Edit Depot"
+      packages:          "Packages"
+      package_tooltip:   "A Package is a ..."
+      add_package:       "Create Package"
+      package_name:      "Name"
+      package_desc:      "Description"
+      package_version:   "Version"
+      package_url:       "URL"
+      package_status:    "Status"
+      package_type:      "Type"
+      close:             "Close"
+      back:              "Back"
+      cancel:            "Cancel"
+      actions:           "Actions"
+      show:              "Show Artifacts"
+      edit:              "Edit Package"
+      destroy:           "Delete Package"
+      confirm:           "Confirm Delete Package?\n\nWARNING: Deleting a Package will delete all associated artifacts!"
+    form:
+      depot_name:        "Name"
+      depot_description: "Description"
+      depot_type:        "Type"
+      depot_url:         "URL"
+      depot_status:      "Status"
+      submit:            "Submit"
+      cancel:            "Cancel"
+      error01:           "prohibited this user from being saved"
+    form_popup:
+      name:              "Name"
+      description:       "Description"
+      status:            "Status"
+      submit:            "Submit"
+      error01:           "prohibited this user from being saved"
+    
+  packages:
+    new:
+      add_package:        "Create Package"
+    form:
+      name:              "Name"
+      description:       "Description"
+      status:            "Status"
+      back:              "Cancel"
+    edit:
+      edit_package:      "Edit Package"
+      description:       "Description"
+    show:
+      package_name:      "Name"
+      package_desc:      "Description"
+      package_details:   "Package Details"
+      package_type:      "Type"
+      package_version:   "Version"
+      package_url:       "URL"
+      package_status:    "Status"
+      artifact_tooltip:  "An Artifact is a ..."
+      artifacts:         "Artifacts"
+      artifact_name:     "Name"
+      artifact_desc:     "Description"
+      artifact_type:     "Type"
+      artifact_url:      "URL"
+      artifact_version:  "Version"
+      add_artifact:      "Add Artifact"
+      back:              "Back"
+      actions:           "Actions"
+      show:              "Show Artifact"
+      edit:              "Edit Artifact"
+      destroy:           "Delete Artifact"
+      confirm:           "Confirm Delete Artifact?"
+      
+  artifacts:
+    form:
+      name:              "Name"
+      description:       "Description"
+      back:              "Cancel"
+    form_edit:
+      back:              "Back"
+    show:
+      artifact_name:     "Name"
+      artifact_desc:     "Description"
+      artifact_details:  "Artifact Details"
+      artifact_tooltip:  "An artifact is a ..."
+      artifacts:         "Artifacts"
+      artifact_name:     "Artifact Name"
+      artifact_desc:     "Artifact Description"
+      artifact_type:     "Type"
+      artifact_version:  "Version"
+      add_artifact:      "Add Artifact"
+      back:              "Back"
+    new:
+      add_artifact:      "Add Artifact"
+      cancel:            "Cancel"
+    edit:
+      edit_artifact:     "Edit Artifact"
+      
+  users:
+    index:
+      users:             "Users"
+      user_id:           "Name"
+      users_tooltip:     "A User is a ..."
+      firstname:         "FirstName"
+      lastname:          "LastName"
+      email:             "Email"
+      role:              "Role"
+      actions:           "Actions"
+      show:              "Show"
+      edit:              "Edit"
+      destroy:           "Destroy"
+      confirm:           "Confirm Delete User?"
+      new_user:          "New User"
+    edit:
+      edit_user:         "Edit User"
+      details:           "Details"
+      cancel:            "Cancel"
+    new:
+      add_user:          "Add User"
+      cancel:            "Cancel"
+    show:
+      user_details:      "User Details"
+      user_id:           "Name"
+      firstname:         "FirstName"
+      lastname:          "LastName"
+      email:             "Email"
+      role:              "Role"
+      hash_password:     "Hashed Password"
+      salt:              "Salt"
+      edit_user:         "Edit User"
+      cancel:            "Cancel"
+    form:
+      name:              "Name"
+      firstname:         "First Name"
+      lastname:          "Last Name"
+      password:          "Password"
+      confirm:           "Confirm"
+      email:             "Email"
+      role:              "Role"
+      submit:            "Submit"
+      error01:           "prohibited this user from being saved"
+      
+  roles:
+    index:
+      roles:             "Roles"
+      roles_tooltip:     "A Role is a ..."
+      name:              "Name"
+      description:       "Description"
+      read:              "Read"
+      write:             "Write"
+      execute:           "Execute"
+      yes:               "Yes"
+      no:                "Nope"
+      actions:           "Actions"
+      show:              "Show"
+      edit:              "Edit"
+      destroy:           "Destroy"
+      confirm:           "Confirm Delete Role?"
+      new_role:          "New Role"
+    edit:
+      edit_role:         "Edit Role"
+      details:           "Details"
+      cancel:            "Cancel"
+    new:
+      add_role:          "Add Role"
+      cancel:            "Cancel"
+    show:
+      Role_details:      "Role Details"
+      name:              "Name"
+      description:       "Description"
+      edit_role:         "Edit Role"
+      cancel:            "Cancel"
+    form:
+      name:              "Name"
+      description:       "Description"
+      permissions:       "Permissions"
+      read:              "Read"
+      write:             "Write"
+      execute:           "Execute"
+      submit:            "Submit"
+      error01:           "prohibited this user from being saved"
+
+  credentials:
+    index:
+      credentials:        "Credentials"
+      creds_tooltip:      "A Credential is a ..."
+      project_name:       "Depot Name"
+      user_name:          "User Name"
+      role_name:          "Role Name"
+      read:               "Read"
+      write:              "Write"
+      execute:            "Execute"
+      actions:            "Actions"
+      show:               "Show"
+      edit:               "Edit"
+      destroy:            "Destroy"
+      confirm:            "Confirm Delete Credential?"
+      new_credential:     "New Credential"
+    edit:
+      edit_credential:    "Edit Credential"
+      details:            "Details"
+      cancel:             "Cancel"
+    new:
+      add_credential:     "Add Credential"
+      cancel:             "Cancel"
+    show:
+      credential_details: "Credential Details"
+      project_name:       "Depot Name"
+      user_name:          "User Name"
+      role_name:          "Role Name"
+      edit_credential:    "Edit Credential"
+      cancel:             "Cancel"
+    form:
+      depot_name:         "Depot Name"
+      user_name:          "User Name"
+      role_name:          "Role Name"
+      error01:            "prohibited this user from being saved"
+     
+####################
+# Engines
+####################
+
+  engines:
+    index:
+      engines:             "Engines"
+      engines_tooltip:     "An Engine is a ..."
+      engine_name:         "Engine Name"
+      engine_desc:         "Engine Description"
+      engine_type:         "Engine Type"
+      engine_host:         "Engine Host"
+      engine_threads:      "Engine Threads"
+      new_engine:          "New Engine"
+      show:               "Show"
+      edit:               "Edit"
+      destroy:            "Destroy"
+      confirm:            "Confirm Delete Engine?"
+    new:
+      add_engine:          "Add Engine"
+      cancel:              "Cancel"
+    edit:
+      edit_engine:         "Edit Engine"
+      details:             "Details"
+      cancel:              "Cancel"
+    show:
+      engines_details:     "Engine Details"
+      engine_name:         "Engine Name"
+      engine_desc:         "Engine Description"
+      engine_type:         "Engine Type"
+      engine_host:         "Engine Host"
+      engine_threads:      "Engine Threads"
+      edit_engine:         "Edit Engine"
+      cancel:              "Cancel"
+    form:
+      engine_name:         "Engine Name"
+      engine_desc:         "Engine Description"
+      engine_type:         "Engine Type"
+      engine_host:         "Engine Host"
+      engine_threads:      "Engine Threads"
+      submit:              "Submit"
+      
+####################
+# Workers
+####################
+
+  workers:
+    index:
+      workers:             "Agents"
+      workers_tooltip:     "An Agent is a ..."
+      worker_name:         "Name"
+      worker_desc:         "Description"
+      worker_type:         "Type"
+      worker_host:         "Host"
+      worker_port:         "Port"
+      worker_user:         "User"
+      worker_hash_pass:    "Password"
+      new_worker:          "New Agent"
+      show:                "Show"
+      edit:                "Edit"
+      destroy:             "Destroy"
+      confirm:             "Confirm Delete Agent?"
+    new:
+      add_worker:          "Add Agent"
+      cancel:              "Cancel"
+    edit:
+      edit_Worker:         "Edit Agent"
+      details:             "Details"
+    show:
+      workers_details:     "Details"
+      worker_name:         "Name"
+      worker_desc:         "Description"
+      worker_type:         "Type"
+      worker_host:         "Host"
+      worker_port:         "Port"
+      worker_user:         "User"
+      worker_hash_pass:    "Password"
+      edit_worker:         "Edit Agent"
+      back:                "Back"
+      cancel:              "Cancel"
+    form:
+      worker_name:         "Name"
+      worker_desc:         "Description"
+      worker_type:         "Type"
+      worker_host:         "Host"
+      worker_port:         "Port"
+      worker_user:         "User"
+      worker_hash_pass:    "Password"
+      submit:              "Submit"
+      cancel:              "Cancel"
+
+####################
+# Shared
+####################
+
+  shared:
+    nav:
+      tab_home:           "Home"
+      tab_depots:         "Depots"
+      tab_users:          "Users"
+      tab_roles:          "Roles"
+      tab_credentials:    "Credentials"
+      tab_dropdown:       "Dropdown"
+      
+    nav_sidebar:
+      tab_home:           "Home"
+      tab_depots:         "Depots"
+      tab_projects:       "Depots"
+      tab_reports:        "Reports"
+      tab_databases:      "Databases"
+      tab_profiles:       "Profiles"
+      tab_packages:       "Packages"
+      tab_artifacts:      "Artifacts"
+      tab_users:          "Users"
+      tab_roles:          "Roles"
+      tab_credentials:    "Credentials"
+      tab_engines:        "Engines"
+      tab_workers:        "Agents"
+      tab_settings:       "Settings"

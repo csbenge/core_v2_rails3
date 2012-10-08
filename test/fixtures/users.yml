@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer         not null, primary key
+#  name            :string(255)
+#  hashed_password :string(255)
+#  salt            :string(255)
+#  email           :string(255)
+#  role_id         :string(255)
+#  created_at      :datetime        not null
+#  updated_at      :datetime        not null
+#  firstname       :string(255)
+#  lastname        :string(255)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: testuser
+  hashed_password: 44791733818c6ea71afea23a739cd4080018f14108bc60965d237ac82452178c
+  salt: 426309800.7889608010038228
+  email: testuser@test.com
+  role: User
+
+two:
+  name: testuser2
+  hashed_password: 44791733818c6ea71afea23a739cd4080018f14108bc60965d237ac82452178c
+  salt: 426309800.7889608010038228
+  email: testuser2@test.com
+  role: User

@@ -1,0 +1,21 @@
+
+<header class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to image_tag( "datical.png", :border => 0) + "  " + t('.app_name'), '#', id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to t('.home'),    '/home' %></li>
+          <li><%= link_to t('.help'),    '/help' %></li>
+          <% if session[:user_id] == nil %>
+            <li><%= link_to t('.login'), '/login' %></li>
+          <% end %>
+          <% if session[:user_id] != nil %>
+            <li><%= link_to t('.logout'), '/logout' %></li>
+            <li><%= link_to t('.login_as') + "#{session[:user_id]}", '' %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
