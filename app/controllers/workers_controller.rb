@@ -92,20 +92,16 @@ class WorkersController < ApplicationController
 
     $clientSession = nil
 
-    $workerName = 'localhost'
-    $workerPort = 50000
-    $auth_key   = "5F3BDD56"
-
     # Connect to Worker and authenticate
     begin
-      $clientSession = TCPSocket.new($workerName, $workerPort )
-    rescue
+      $clientSession = TCPSocket.new(@worker.wrk_host, @worker.wrk_port.to_i)
+    rescue Exception => e
       respond_to do |format|
-        format.html { redirect_to @worker, alert: 'Cannot connect to worker.' }
+        format.html { redirect_to @worker, alert: 'Cannot connect to agent: '  + @worker.wrk_name.chomp }
         format.json { head :no_content }
       end
     else
-      $clientSession.puts $auth_key
+      $clientSession.puts @worker.wrk_auth_token
       workerResponse = $clientSession.gets
     
       if workerResponse.include? "UNAUTHORIZED"

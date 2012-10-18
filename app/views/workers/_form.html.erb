@@ -38,7 +38,13 @@
   <tr>
     <td align="right" style="width:100px"><%= f.label t('.worker_port') %></td>
     <td><%= f.text_field :wrk_port %></td>
-    <tr><td><br></td></tr>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.worker_auth_token') %></td>
+    <td><%= f.text_field :wrk_auth_token %></td>
+  </tr>
+  <tr><td><br></td></tr>
   <tr>
     <td align="right" style="width:100px"><%= f.label t('.worker_user') %></td>
     <td><%= f.text_field :wrk_user %></td>

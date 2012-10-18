@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-DeePoh::Application.load_tasks
+Core::Application.load_tasks

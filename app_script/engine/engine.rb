@@ -60,7 +60,8 @@ def run_task(task)
      $log.info log_msg
   else
     $log.info "ENGINE: Authenticating Connection with WORKER."
-    clientSession.puts $auth_key
+    puts "*** " + this_worker.wrk_auth_token
+    clientSession.puts this_worker.wrk_auth_token
     workerResponse = clientSession.gets
     if workerResponse.include? "CONNECTION ACCEPTED"
       $log.info "ENGINE: " + workerResponse

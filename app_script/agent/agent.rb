@@ -73,8 +73,15 @@ init_Logger("DEBUG")
 init_Settings()
 
 $log.info "AGENT: Starting..."
-server = TCPServer.new($port)
-$log.info "AGENT: Waiting for task..."
+begin
+	server = TCPServer.new($port)
+rescue Exception => e
+  log_msg = "AGENT: Cannot listen on PORT: " + $port.to_s + ", MSG: " + e.message
+  $log.fatal log_msg
+  $log.fatal "AGENT: Exiting."
+  exit 1
+end
+$log.info "AGENT: Ready for CMDs..."
 
 #-----------------------------------#
 # Loop 4ever
@@ -82,12 +89,13 @@ $log.info "AGENT: Waiting for task..."
 
 thread_count = 0
 
-loop do
-  Thread.start(server.accept)  do |session| # Wait for a connection
-    
+#loop do
+#  Thread.start(server.accept)  do |session| # Wait for a connection
+
+while (session = server.accept)   # Wait for a connection
 		authenticated_connection = false
-		thread_count += 1
-		puts "***Thread Count: " + thread_count.to_s
+		#thread_count += 1
+		#puts "***Thread Count: " + thread_count.to_s
   
     $log.info "AGENT: Connection to ENGINE - #{session.peeraddr[2]}"
     
@@ -107,7 +115,7 @@ loop do
     #-- BEGIN: Process Task(s)
     
     tasks = session.gets
-    $log.info "AGENT:   Task(s) - #{tasks}".chomp
+    $log.info "AGENT:   CMD(s) - #{tasks}".chomp
     
     tasks.split(';').each do |task|
       
@@ -116,17 +124,19 @@ loop do
         session.puts result 
         next
       end
-      session.puts "TASK: " + "#{task}"
+      session.puts "CMD: " + "#{task}"
       status = POpen4::popen4("#{task}") do |stdout, stderr, stdin|  
-        stdout.each do |line|  
-          session.puts line  
+        stdout.each do |line|
+					output = "STDOUT: " + line
+          session.puts output
         end
         stderr.each do |line|  
-          session.puts line  
+					output = "STDERR: " + line
+          session.puts output
         end 
       end  
       if status == nil
-        session.puts "from AGENT: Invalid task(s): #{tasks}"
+        session.puts "from AGENT: Invalid CMD(s): #{tasks}"
       end
     end
     
@@ -136,7 +146,7 @@ loop do
     session.puts "from AGENT: Goodbye."
     authenticated_connection = false
     
-    $log.info "AGENT: Waiting for task..."
-  end
+    $log.info "AGENT: Waiting for CMDs..."
+#  end
   
 end

@@ -21,6 +21,7 @@
     <th style="text-align: center; background-color: #91b96f"><%= sortable t('.worker_type') %></th></th>
     <th style="background-color: #91b96f"><%= sortable t('.worker_host') %></th>
     <th style="background-color: #91b96f"><%= sortable t('.worker_port') %></th>
+    <th style="text-align: center; background-color: #91b96f"><%= sortable t('.worker_auth_token') %></th>
     <th style="background-color: #91b96f"><%= sortable t('.worker_user') %></th>
     <th style="background-color: #91b96f"><%= sortable t('.worker_hash_pass') %></th>
 
@@ -34,6 +35,7 @@
     <td style="text-align: center"><%= raw get_WorkerTypeText(worker.wrk_type) %></td>
     <td><%= worker.wrk_host %></td>
     <td><%= worker.wrk_port %></td>
+    <td style="text-align: center"><%= worker.wrk_auth_token %></td>
     <td><%= worker.wrk_user %></td>
     <td><%= worker.wrk_hashed_password %></td>
 

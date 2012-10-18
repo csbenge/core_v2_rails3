@@ -54,7 +54,6 @@ module Initialization
     
     config      = YAML.load_file("engine_settings.yml")
     
-    $auth_key   = config["engine"]["auth_key"]
     $sleep_Interval = config["engine"]["sleep_interval"].to_i * 60
     $x_License = config["engine"]["license"]
     

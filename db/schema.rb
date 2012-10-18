@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928210645) do
+ActiveRecord::Schema.define(:version => 20121018202003) do
 
   create_table "artifacts", :force => true do |t|
     t.string   "art_name"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20120928210645) do
     t.string   "wrk_hashed_password"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "wrk_auth_token"
   end
 
 end

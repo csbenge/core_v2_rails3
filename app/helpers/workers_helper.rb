@@ -6,4 +6,5 @@ module WorkersHelper
     type = TYPE.index(worker_type.to_i)
     "<span class='label label-default'>#{type}</span>"
   end
+   
 end

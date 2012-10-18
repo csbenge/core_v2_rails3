@@ -25,7 +25,7 @@
 </tr>
 <tr>
   <td align="right" style="width:200px"><b><%= t('.worker_type') %></b></td>
-  <td><%= @worker.wrk_type %></td>
+  <td><%= raw get_WorkerTypeText(@worker.wrk_type) %></td>
 </tr>
 <tr>
   <td align="right" style="width:200px"><b><%= t('.worker_host') %></b></td>
@@ -34,6 +34,11 @@
 <tr>
   <td align="right" style="width:200px"><b><%= t('.worker_port') %></b></td>
   <td><%= @worker.wrk_port %></td>
+</tr>
+<tr>
+  <td align="right" style="width:200px"><b><%= t('.worker_auth_token') %></b></td>
+  <td><%= @worker.wrk_auth_token %></td>
+</tr>
 <tr>
   <td align="right" style="width:200px"><b><%= t('.worker_user') %></b></td>
   <td><%= @worker.wrk_user %></td>
