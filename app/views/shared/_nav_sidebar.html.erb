@@ -6,9 +6,10 @@
    <li><%= link_to image_tag( "reports.png", :border => 0, :align => "top" ) + " " + t('.tab_reports'), home_path %></li>
   <br/>
   
-  <li class="nav-header">Depots</li>
+  <li class="nav-header">Resources</li>
   <ul class="nav">
-  <li><%= link_to image_tag( "depots.png", :border => 0, :align => "top" ) + " " + t('.tab_projects'), depots_path %></li>
+  <li><%= link_to image_tag( "depots.png", :border => 0, :align => "top" ) + " " + t('.tab_depots'), depots_path %></li>
+  <li><%= link_to image_tag( "schedules.png", :border => 0, :align => "top" ) + " " + t('.tab_schedules'), depots_path %></li>
   </ul>
   
   <% if (session[:user_role] == "admin") || (session[:user_role] == "manager") %>
@@ -34,7 +35,7 @@
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= image_tag( "settings.png", :border => 0, :align => "top" ) %> <%= t('.tab_settings') %><b class="caret"></b></a>
        <ul class="dropdown-menu">
-        <li><%= link_to image_tag( "servers.png", :border => 0, :align => "top" ) + " " + 'Database Servers', home_path %></li>
+        <li><%= link_to image_tag( "servers.png", :border => 0, :align => "top" ) + " " + 'General', home_path %></li>
         <li><%= link_to image_tag( "drivers.png", :border => 0, :align => "top" ) + " " + 'Database Drivers', home_path %></li>
         <li class="divider"></li>
         <li><%= link_to t('.tab_home'), home_path %></li>

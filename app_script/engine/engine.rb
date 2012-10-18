@@ -38,6 +38,9 @@ def lookup_worker(id)
     :host     => 'localhost')
    
   worker = Worker.find(id)
+  #worker = Worker.new
+  #worker.wrk_host = "localhost"
+  #worker.wrk_port = "50000"
   return worker
 end
 
@@ -64,10 +67,10 @@ def run_task(task)
       $log.info "ENGINE: Sending tasks to WORKER."
       clientSession.puts task
       
-      # Wait for messages from the worker
+      # Wait for messages from the agent
       
       puts "----- BEGIN: OUTPUT -----"
-      
+       
       while !(clientSession.closed?) && (workerResponse = clientSession.gets)
         ## lets output our server messages
         puts workerResponse
@@ -102,11 +105,16 @@ $log.info "ENGINE: License - " + "Term:" + decrypt_it("term", $lic["term"]) + ",
 sched = Schedule.new
 sched_jobs = [ "* * 27 * * 3600 ls -l;ls -a;.scp src dst",
                "* * 27 * * 3600 cat /etc/hosts ",
-               "* 22 * * * 3600 ls /etc ",
-               "* * * 9 * 3600 sleep 5",
+               "* */6 * * * 3600 ls /etc ",
+               "*/15 * * * * 3600 sleep 5",
                "* * * * * 3600 ls",
                "* * * 9 * 3600 cat /etc/hosts",
-               "* * * 9 * 3600 sleep 25;ls -a"
+               "* * * 9 * 3600 sleep 25;ls -a",
+               "* * * * * 3600 sleep 5;ls -a",
+               "* * * * * 3600 sleep 10;ls -a",
+               "* * * * * 3600 sleep 15;ls -a",
+               "* * * * * 3600 sleep 20;ls -a",
+               "* * * * * 3600 sleep 25;ls -a;env"
              ]
   
 threads      = []
@@ -118,22 +126,27 @@ thread_count = 0
   for job in sched_jobs
     if sched.time_to_run(job)
       thread_count += 1
-      puts "***Thread Count: " + thread_count.to_s
-      threads << Thread.new(job) { |thisJob|
+      #while thread_count > 10
+      #  puts "***Waiting for thread..."
+      #  sleep(5)
+      #end
+      #puts "***RUN: Thread: " + thread_count.to_s + ", Job: " + job
+      #threads << Thread.new(job) { |thisJob|
         thisSched = Schedule.new
-        thisSched.min, thisSched.hour, thisSched.dmonth, thisSched.month, thisSched.dweek, thisSched.timeout, thisSched.cmd = thisJob.split(/ /, 7)
-        #sched.min, sched.hour, sched.dmonth, sched.month, sched.dweek, sched.timeout, sched.cmd = thisJob.split(/ /, 7)
+        thisSched.min, thisSched.hour, thisSched.dmonth, thisSched.month, thisSched.dweek, thisSched.timeout, thisSched.cmd = job.split(/ /, 7)
         $log.info "ENGINE: Running Scheduled Task: " + thisSched.cmd
         run_task(thisSched.cmd)
-        thread_count -= 1
-        puts "***Thread Count: " + thread_count.to_s
-      }
+      #  thread_count -= 1
+      #  puts "***Thread Count: " + thread_count.to_s
+      #}
     end
   end
   
-  threads.each { |aThread|  aThread.join }
+  #threads.each { |aThread|
+  #  aThread.join
+  #}
   
-  # Run thru job table and see if any are ready to run
+# Run thru job table and see if any are ready to run
   
   # sleep $sleep_Interval
 #end loop do

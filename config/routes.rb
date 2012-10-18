@@ -1,4 +1,4 @@
-DeePoh::Application.routes.draw do
+Core::Application.routes.draw do
   
   controller :sessions do
     get 'login' => :new

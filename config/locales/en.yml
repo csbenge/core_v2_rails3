@@ -13,7 +13,7 @@ en:
 
 # Controllers
 
-  app_name:           "Depot"
+  app_name:           "Core"
   
   user_created:       "User was successfully created."
   user_updated:       "User was successfully updated."
@@ -427,7 +427,8 @@ en:
     nav_sidebar:
       tab_home:           "Home"
       tab_depots:         "Depots"
-      tab_projects:       "Depots"
+      tab_projects:       "Projects"
+      tab_schedules:      "Schedules"
       tab_reports:        "Reports"
       tab_databases:      "Databases"
       tab_profiles:       "Profiles"

@@ -85,9 +85,9 @@ thread_count = 0
 loop do
   Thread.start(server.accept)  do |session| # Wait for a connection
     
-  authenticated_connection = false
-  thread_count += 1
-  puts "***Thread Count: " + thread_count.to_s
+		authenticated_connection = false
+		thread_count += 1
+		puts "***Thread Count: " + thread_count.to_s
   
     $log.info "AGENT: Connection to ENGINE - #{session.peeraddr[2]}"
     

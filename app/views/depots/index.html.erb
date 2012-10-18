@@ -36,9 +36,9 @@
     <td><%= depot.dep_url %></td>
     <% end %>
     <td style="text-align: center"><%= raw get_DepotStatusText(depot.dep_status) %></td>
-    <td style="text-align: center;width:100px"><%= link_to t('.show'), depot, :method => "get", :class => "btn btn-primary btn-mini" %></td>
-    <td style="text-align: center;width:100px"><% if user_HasWriteAccess(depot.id, session[:user_id]) %><%= link_to t('.edit'), edit_depot_path(depot), :method => "get", :class => "btn btn-warning btn-mini" %><% else %><%= link_to t('.edit'), nil, title: t('.depot_no_cred'), rel: 'popover', :class => "btn btn-default btn-mini" %><% end %></td>
-    <td style="text-align: center;width:100px"><% if user_HasWriteAccess(depot.id, session[:user_id]) %><%= link_to t('.destroy'), depot, confirm: t('.confirm'), method: :delete, :class => "btn btn-danger btn-mini" %><% else %><%= link_to t('.destroy'), nil, title: t('.depot_no_cred'), rel: 'popover', :class => "btn btn-default btn-mini" %><% end %></td>
+    <td style="text-align: center;width:100px"><%= link_to t('.show'), depot, :method => "get", :class => "btn btn-mini" %></td>
+    <td style="text-align: center;width:100px"><% if user_HasWriteAccess(depot.id, session[:user_id]) %><%= link_to t('.edit'), edit_depot_path(depot), :method => "get", :class => "btn btn-mini" %><% else %><%= link_to t('.edit'), nil, title: t('.depot_no_cred'), rel: 'popover', :class => "btn btn-default btn-mini" %><% end %></td>
+    <td style="text-align: center;width:100px"><% if user_HasWriteAccess(depot.id, session[:user_id]) %><%= link_to t('.destroy'), depot, confirm: t('.confirm'), method: :delete, :class => "btn btn-mini" %><% else %><%= link_to t('.destroy'), nil, title: t('.depot_no_cred'), rel: 'popover', :class => "btn btn-default btn-mini" %><% end %></td>
   </tr>
  <% end %>
 <% end %>
