@@ -1,7 +1,6 @@
 
 <h3><%= image_tag( "workers.png", :border => 0, :valign => "middle" ) %> <%= t('.workers') %> <%= link_to image_tag('tooltip12x12.png', :border => 0, :align => "top"), nil, title: t('.workers_tooltip'), rel: 'popover' %></h3>
 
-
 <% unless notice.nil? %>
   <div class="container center alert alert-success"  style="width:500px">
     <p id="notice"><%= notice %></p>

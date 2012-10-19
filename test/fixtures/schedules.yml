@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sch_name: MyString
+  sch_cronspec: MyString
+  sch_status: 1
+  sch_user: 1
+  sch_action: MyString
+
+two:
+  sch_name: MyString
+  sch_cronspec: MyString
+  sch_status: 1
+  sch_user: 1
+  sch_action: MyString

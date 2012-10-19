@@ -58,6 +58,9 @@ Core::Application.routes.draw do
   resources :credentials
   match '/credentials/new', to: 'credentials#new'
   
+  resources :schedules
+  match '/schedules/new', to: 'schedules#new'
+  
   resources :engines
   match '/engines/new', to: 'engines#new'
     

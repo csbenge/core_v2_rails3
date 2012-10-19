@@ -1,0 +1,11 @@
+<h2><%= t('.edit_schedule') %></h2><br>
+
+<% unless notice.nil? %>
+  <div class="container center alert alert-error"  style="width:500px">
+    <p id="notice"><%= notice %></p>
+  </div>
+<% end %>
+
+<%= render 'form' %>
+
+</div>

@@ -414,6 +414,51 @@ en:
       submit:              "Submit"
       cancel:              "Cancel"
 
+
+####################
+# Schedules
+####################
+
+  schedules:
+    index:
+      schedules:             "Schedules"
+      schedules_tooltip:     "An Schedule is a ..."
+      schedule_name:         "Name"
+      schedule_cronspec:     "CronSpec"
+      schedule_next_run:     "Next Run"
+      schedule_status:       "Status"
+      schedule_user:         "User"
+      schedule_action:       "Action"
+      new_schedule:          "New Schedule"
+      show:                  "Show"
+      edit:                  "Edit"
+      destroy:               "Destroy"
+      confirm:               "Confirm Delete Schedule?"
+    new:
+      add_schedule:          "Add Schedule"
+      cancel:                "Cancel"
+    edit:
+      edit_schedule:         "Edit Schedule"
+      details:               "Details"
+    show:
+      schedules_details:     "Details"
+      schedule_name:         "Name"
+      schedule_cronspec:     "CronSpec"
+      schedule_status:       "Status"
+      schedule_user:         "User"
+      schedule_action:       "Action"
+      edit_schedule:         "Edit Schedule"
+      back:                  "Back"
+      cancel:                "Cancel"
+    form:
+      schedule_name:         "Name"
+      schedule_cronspec:     "CronSpec"
+      schedule_status:       "Status"
+      schedule_user:         "User"
+      schedule_action:       "Action"
+      submit:                "Submit"
+      cancel:                "Cancel"
+
 ####################
 # Shared
 ####################

@@ -9,7 +9,7 @@
   <li class="nav-header">Resources</li>
   <ul class="nav">
   <li><%= link_to image_tag( "depots.png", :border => 0, :align => "top" ) + " " + t('.tab_depots'), depots_path %></li>
-  <li><%= link_to image_tag( "schedules.png", :border => 0, :align => "top" ) + " " + t('.tab_schedules'), depots_path %></li>
+  <li><%= link_to image_tag( "schedules.png", :border => 0, :align => "top" ) + " " + t('.tab_schedules'), schedules_path %></li>
   </ul>
   
   <% if (session[:user_role] == "admin") || (session[:user_role] == "manager") %>

@@ -97,7 +97,7 @@ class WorkersController < ApplicationController
       $clientSession = TCPSocket.new(@worker.wrk_host, @worker.wrk_port.to_i)
     rescue Exception => e
       respond_to do |format|
-        format.html { redirect_to @worker, alert: 'Cannot connect to agent: '  + @worker.wrk_name.chomp }
+        format.html { redirect_to @worker, alert: 'Cannot connect to agent: ' + @worker.wrk_name.chomp }
         format.json { head :no_content }
       end
     else
@@ -106,7 +106,7 @@ class WorkersController < ApplicationController
     
       if workerResponse.include? "UNAUTHORIZED"
         respond_to do |format|
-          format.html { redirect_to @worker, alert: 'Unauthorized access.' }
+          format.html { redirect_to @worker, alert: 'Not authorized to access agent: '  + @worker.wrk_name.chomp }
           format.json { head :no_content }
         end
       else

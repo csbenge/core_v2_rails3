@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121018202003) do
+ActiveRecord::Schema.define(:version => 20121019125303) do
 
   create_table "artifacts", :force => true do |t|
     t.string   "art_name"
@@ -76,6 +76,16 @@ ActiveRecord::Schema.define(:version => 20121018202003) do
     t.integer  "execute",     :default => 0
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "schedules", :force => true do |t|
+    t.string   "sch_name"
+    t.string   "sch_cronspec"
+    t.integer  "sch_status"
+    t.integer  "sch_user"
+    t.string   "sch_action"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "up_loads", :force => true do |t|

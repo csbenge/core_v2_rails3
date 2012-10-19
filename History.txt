@@ -9,7 +9,6 @@ git remote add origin git@github.com:csbenge/Core.git
 git remote set-url origin ssh://git@github.com/csbenge/Core.git
 git push -u origin master
 
-
 #########################
 # Depot
 
@@ -35,9 +34,9 @@ rake db:migrate
 rails generate scaffold Worker wrk_name:string wrk_description:string wrk_type:string wrk_host:string wrk_port:integer wrk_user:string wrk_hashed_password:string
 rake db:migrate
 
-# TODO: Add auth_token to worker
+# Add auth_token to worker
 rails generate migration AddAuthTokenToWorkers
-rake db:migrate VERSION=20120503204151
+rake db:migrate 
 
 #########################
 # TODO: Schedule
@@ -45,6 +44,9 @@ rails generate scaffold Schedule sch_name:string sch_cronspec:string sch_status:
 
 #########################
 # TODO: Logfile
+
+rails generate scaffold Log log_date:string log_level:integer log_output:string
+
 <tr class="altrow">
     <td style="width: 15%">Tue Oct 9 11:53am&nbsp;</td>
     <td style="width: 15%; white-space: nowrap; padding-right: 30px">MedRec_JDBC</td>

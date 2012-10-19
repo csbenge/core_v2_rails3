@@ -1,0 +1,51 @@
+
+<%= form_for(@schedule) do |f| %>
+
+  <% if @schedule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@schedule.errors.count, "error") %> <%= t('.error01') %></h2>
+
+      <ul>
+      <% @schedule.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <table>
+  <tr>
+    <td align="right" style="width:150px"><%= f.label t('.schedule_name') %></td>
+    <td><%= f.text_field :sch_name, :autofocus => true %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.schedule_cronspec') %></td>
+    <td><%= f.text_field :sch_cronspec %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.schedule_status') %></td>
+    <td><%= f.select :sch_status, SchedulesHelper::STATUS %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.schedule_user') %></td>
+    <td><%= collection_select :schedule, :sch_user, User.find(:all), :id, :name %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  <tr>
+    <td align="right" style="width:100px"><%= f.label t('.schedule_action') %></td>
+    <td><%= f.text_field :sch_action %></td>
+  </tr>
+  <tr><td><br></td></tr>
+  </table>
+  
+  <br>
+  <button type="submit" class="btn btn-primary"><%= t('.submit') %></button>
+  <br>
+  <%= link_to t('.cancel'), schedules_path %>
+
+<% end %>
+
+
