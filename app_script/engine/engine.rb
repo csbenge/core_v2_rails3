@@ -24,6 +24,9 @@ include Scheduler
 class Worker < ActiveRecord::Base
 end
 
+class Schedule < ActiveRecord::Base
+end
+
 #-----------------------------------#
 # lookup_worker
 #-----------------------------------#
@@ -38,9 +41,6 @@ def lookup_worker(id)
     :host     => 'localhost')
    
   worker = Worker.find(id)
-  #worker = Worker.new
-  #worker.wrk_host = "localhost"
-  #worker.wrk_port = "50000"
   return worker
 end
 
@@ -60,7 +60,6 @@ def run_task(task)
      $log.info log_msg
   else
     $log.info "ENGINE: Authenticating Connection with WORKER."
-    puts "*** " + this_worker.wrk_auth_token
     clientSession.puts this_worker.wrk_auth_token
     workerResponse = clientSession.gets
     if workerResponse.include? "CONNECTION ACCEPTED"
@@ -103,51 +102,33 @@ $log.info "ENGINE: License - " + "Term:" + decrypt_it("term", $lic["term"]) + ",
                                  "Users:" + decrypt_it("users", $lic["users"]) + ", " +
                                  "Workers:" + decrypt_it("workers", $lic["workers"])
 
-sched = Schedule.new
-sched_jobs = [ "* * 27 * * 3600 ls -l;ls -a;.scp src dst",
-               "* * 27 * * 3600 cat /etc/hosts ",
-               "* */6 * * * 3600 ls /etc ",
-               "*/15 * * * * 3600 sleep 5",
-               "* * * * * 3600 ls",
-               "* * * 9 * 3600 cat /etc/hosts",
-               "* * * 9 * 3600 sleep 25;ls -a",
-               "* * * * * 3600 sleep 5;ls -a",
-               "* * * * * 3600 sleep 10;ls -a",
-               "* * * * * 3600 sleep 15;ls -a",
-               "* * * * * 3600 sleep 20;ls -a",
-               "* * * * * 3600 sleep 25;ls -a;env"
-             ]
-  
-threads      = []
-thread_count = 0
-
+sched = SchedulerWK.new
+STATUS = {'Enabled' => 1, 'Disabled' => 2}
+ 
 #loop do
 
-# Run thru schedule table and run job if it it time.
-  for job in sched_jobs
+#
+### Run thru schedule table and run job if it it time.
+#
+schedules = sched.lookup_schedules()
+  for job in schedules
+    status = STATUS.key(job.sch_status.to_i)
+    if status == "Disabled"
+      next
+    end
     if sched.time_to_run(job)
-      thread_count += 1
-      #while thread_count > 10
-      #  puts "***Waiting for thread..."
-      #  sleep(5)
-      #end
-      #puts "***RUN: Thread: " + thread_count.to_s + ", Job: " + job
-      #threads << Thread.new(job) { |thisJob|
-        thisSched = Schedule.new
-        thisSched.min, thisSched.hour, thisSched.dmonth, thisSched.month, thisSched.dweek, thisSched.timeout, thisSched.cmd = job.split(/ /, 7)
+        thisSched = SchedulerWK.new
+        thisSched.min, thisSched.hour, thisSched.dmonth, thisSched.month, thisSched.dweek = job.sch_cronspec.split(/ /, 7)
+        thisSched.cmd = job.sch_action
         $log.info "ENGINE: Running Scheduled Task: " + thisSched.cmd
         run_task(thisSched.cmd)
-      #  thread_count -= 1
-      #  puts "***Thread Count: " + thread_count.to_s
-      #}
     end
   end
-  
-  #threads.each { |aThread|
-  #  aThread.join
-  #}
-  
-# Run thru job table and see if any are ready to run
-  
+
+# 
+### Run thru job table and see if any are ready to run
+#
+
   # sleep $sleep_Interval
+  
 #end loop do

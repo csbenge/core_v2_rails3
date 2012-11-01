@@ -9,14 +9,26 @@
 
 module Scheduler
 
-  class Schedule
+  class SchedulerWK
     attr_accessor :min, :hour, :dmonth, :month, :dweek, :lastrun, :timeout, :cmd
+
+    def lookup_schedules()
+      ActiveRecord::Base.establish_connection(
+        :adapter  => 'postgresql',
+        :database => 'datical_development',
+        :username => 'postgres',
+        :password => 'postgres',
+        :host     => 'localhost')
+       
+      schedules = Schedule.find(:all)
+      return schedules
+    end
     
     def time_to_run(job)
       time = Time.new
-      sched = Schedule.new
-      # scheduler.time_to_run("15 * * * * 3600 [command] ")
-      sched.min, sched.hour, sched.dmonth, sched.month, sched.dweek, sched.timeout, sched.cmd = job.split(/\s+/)
+      sched = SchedulerWK.new
+      sched.min, sched.hour, sched.dmonth, sched.month, sched.dweek = job.sch_cronspec.split(/\s+/)
+      sched.cmd = job.sch_action
         
       # Got current time and sched entry - time to run?
       if ( (time.month.to_i == sched.month.to_i) || (sched.month == "*") )
@@ -27,13 +39,17 @@ module Scheduler
                  return true
               else if sched.min =~ /^\*/
                 step = sched.min.length > 1 ? sched.min[2..-1].to_i : 1
-                puts "Every x Minute: " + step.to_s
+                if time.min.to_i % step == 0
+                  return true
+                end
               end
             end
             else
               if sched.hour =~ /^\*/
                 step = sched.hour.length > 1 ? sched.hour[2..-1].to_i : 1
-                puts "Every x Hour: " + step.to_s
+                if time.hour.to_i % step == 0
+                  return true
+                end
             end
           end
         end
@@ -41,6 +57,8 @@ module Scheduler
       return false
     end
     end
+    
+    
   end
 end
 

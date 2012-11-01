@@ -127,12 +127,16 @@ while (session = server.accept)   # Wait for a connection
       session.puts "CMD: " + "#{task}"
       status = POpen4::popen4("#{task}") do |stdout, stderr, stdin|  
         stdout.each do |line|
-					output = "STDOUT: " + line
+					time = Time.new
+					output =  "STDOUT: " + time.year.to_s + "-" + time.month.to_s  + "-" + time.day.to_s  + " " + time.hour.to_s  + ":" + time.min.to_s + ":" + time.sec.to_s + " - "
+					output += line
           session.puts output
         end
         stderr.each do |line|  
-					output = "STDERR: " + line
-          session.puts output
+					time = Time.new
+					output =  "STDERR: " + time.year.to_s + "-" + time.month.to_s  + "-" + time.day.to_s  + " " + time.hour.to_s  + ":" + time.min.to_s + ":" + time.sec.to_s + " - "
+					output += line
+					session.puts output
         end 
       end  
       if status == nil

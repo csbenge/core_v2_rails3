@@ -3,7 +3,7 @@ module SchedulesHelper
   STATUS = {'Enabled' => 1, 'Disabled' => 2}
   
   def get_ScheduleStatusText(schedule_status)
-    status = STATUS.index(schedule_status.to_i)
+    status = STATUS.key(schedule_status.to_i)
     if status == "Enabled"
       "<span class='label label-success'>#{status}</span>"
     elsif status == "Disabled"

@@ -20,6 +20,7 @@ rake db:migrate
 
 rails generate model Artifact name:string description:string atype:string version:string package:references
 rake db:migrate
+
 rails generate controller Artifacts
 rake db:migrate
 
@@ -39,8 +40,10 @@ rails generate migration AddAuthTokenToWorkers
 rake db:migrate 
 
 #########################
-# TODO: Schedule
+# Schedule
 rails generate scaffold Schedule sch_name:string sch_cronspec:string sch_status:integer sch_user:integer sch_action:string
+
+# TODO: Add sch_last_run
 
 #########################
 # TODO: Logfile
